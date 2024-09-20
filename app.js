@@ -4,38 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-//const {open}=require("sqlite");
-//const sqlite3=require("sqlite3");
-const cors=require("cors");
-// const dbpath=path.join(__dirname,"data.db");
-// let db=null;
-let sqlite3=require("sqlite3").verbose()
-let db=new sqlite3.Database(path.resolve(__dirname,"data.db"))
 
-//  db.run(`CREATE TABLE Family (
-//   id INTEGER PRIMARY KEY AUTOINCREMENT,
-//   name TEXT,
-//   age INTEGER
-// )`,()=>{
-//     console.log("table is created....")})
-
-// const sql_query=`Insert into Family (name,age) values (?,?)`
-// db.run(sql_query,["Abhi",38],()=>{
-// console.log("row is inserted....")
-// })
-
-
-app.get("/data",(req,res)=>{
-  const sql_query=`select * from Family`
-  db.all(sql_query,(err,rows)=>{
-  res.json(rows)
-})
-})
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
